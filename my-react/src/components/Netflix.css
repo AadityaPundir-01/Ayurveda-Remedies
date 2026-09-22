@@ -1,0 +1,41 @@
+.card-heading{
+    margin-bottom: 3.2rem;
+}
+.card {
+  width: 20vw;
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.05),
+  0px 0px 1px rgba(0, 0, 0, 0.08);
+height: auto;
+list-style: none;
+}
+
+.card-content{
+display: flex;
+flex-direction: column;
+gap: 1.2rem;
+
+}
+img{
+      width: 100%;
+      margin-bottom: 10%;
+      
+}
+.super_hit{
+  background-color: #7dcea0;
+  
+}
+.average{
+  background-color: #f7dc6f;
+}
+
+.rating {
+ border-radius: 7px;
+ padding-left: 4px;
+ padding-right: 4px;
+ 
+}
+
+

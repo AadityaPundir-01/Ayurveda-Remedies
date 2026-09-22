@@ -1,0 +1,17 @@
+.env
+.env.*
+!.env.example
+
+.venv/
+__pycache__/
+*.pyc
+
+qdrant_storage/
+
+node_modules/
+dist/
+
+.vscode/
+.idea/
+
+*.log

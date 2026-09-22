@@ -1,0 +1,212 @@
+[
+  {
+    "name": "Ginger Tulsi Honey Decoction",
+    "applicable_symptoms": [
+      "dry cough",
+      "wet cough",
+      "sore throat",
+      "mild cold",
+      "nasal congestion"
+    ],
+    "ingredients": [
+      {
+        "name": "Fresh Ginger Root",
+        "amount": "1 inch freshly grated or crushed",
+        "notes": "Anti-inflammatory and antimicrobial properties"
+      },
+      {
+        "name": "Holy Basil (Tulsi) Leaves",
+        "amount": "8-10 fresh leaves",
+        "notes": "Immunomodulatory and antitussive herb"
+      },
+      {
+        "name": "Raw Pure Honey",
+        "amount": "1 tablespoon",
+        "notes": "Natural demulcent to soothe irritated throat lining"
+      },
+      {
+        "name": "Water",
+        "amount": "1.5 cups (approx 350 ml)",
+        "notes": "Boiling base"
+      }
+    ],
+    "preparation_steps": [
+      "Bring 1.5 cups of water to a boil in a small pot.",
+      "Add the crushed ginger and washed Tulsi leaves into the boiling water.",
+      "Simmer on medium heat for 6-8 minutes until the liquid reduces to approximately 1 cup.",
+      "Strain the decoction into a mug and let it cool down to warm (not hot) temperature.",
+      "Stir in 1 tablespoon of raw honey thoroughly. (Do not add honey to boiling water as it degrades nutrients)."
+    ],
+    "dosage_and_frequency": "Sip 1 cup warm, 2 to 3 times daily, preferably once after waking up and once 30 minutes before bedtime. Continue for 3-5 days.",
+    "precautions_and_contraindications": [
+      "CRITICAL: Do NOT administer honey to infants under 12 months (1 year) of age due to high risk of fatal infant botulism.",
+      "Avoid large amounts of concentrated ginger if taking anticoagulant medications (blood thinners such as Warfarin or Aspirin) as ginger has mild blood-thinning effects.",
+      "Do not consume on an empty stomach if you suffer from acute gastric hyperacidity or ulcers.",
+      "Diabetic patients should monitor blood glucose levels or substitute honey with warm water and pinch of cinnamon."
+    ],
+    "who_should_avoid": [
+      "Infants under 12 months (due to Honey / Botulism hazard)",
+      "Patients scheduled for surgery within 2 weeks (due to ginger blood-thinning)",
+      "Patients on high-dose prescription blood thinners without doctor advice",
+      "Individuals with acute peptic or duodenal ulcers"
+    ],
+    "possible_side_effects": [
+      "Mild heartburn or throat warmth if ginger concentration is too strong"
+    ],
+    "tags": ["respiratory", "cough", "sore throat", "cold", "immunity"]
+  },
+  {
+    "name": "Turmeric Golden Milk (Haldi Doodh)",
+    "applicable_symptoms": [
+      "joint pain",
+      "body aches",
+      "inflammation",
+      "post-illness fatigue",
+      "mild fever recovery"
+    ],
+    "ingredients": [
+      {
+        "name": "Pure Turmeric Powder (Curcuma longa)",
+        "amount": "1/2 teaspoon",
+        "notes": "Rich in curcumin; potent natural anti-inflammatory"
+      },
+      {
+        "name": "Black Pepper Powder (Freshly ground)",
+        "amount": "1 pinch (approx 1/8 teaspoon)",
+        "notes": "Contains piperine, which boosts curcumin absorption by up to 2000%"
+      },
+      {
+        "name": "Milk (Cow milk, Almond milk, or Oat milk)",
+        "amount": "1 cup (250 ml)",
+        "notes": "Fat content aids fat-soluble curcumin absorption"
+      },
+      {
+        "name": "Pure Honey or Jaggery (Optional)",
+        "amount": "1 teaspoon",
+        "notes": "For natural sweetening"
+      }
+    ],
+    "preparation_steps": [
+      "Pour 1 cup of milk into a saucepan and place over medium heat.",
+      "Add 1/2 teaspoon turmeric powder and a pinch of black pepper.",
+      "Whisk well and bring to a gentle simmer for 4 to 5 minutes.",
+      "Remove from heat and pour into a glass.",
+      "Allow to cool slightly before adding honey or jaggery to taste."
+    ],
+    "dosage_and_frequency": "Drink 1 warm cup once daily at bedtime for 1-2 weeks.",
+    "precautions_and_contraindications": [
+      "Avoid large doses of medicinal turmeric if suffering from gallstones, bile duct obstruction, or gallbladder diseases (turmeric stimulates gallbladder contractions).",
+      "Turmeric can slow blood clotting; stop taking at least 2 weeks before scheduled surgeries.",
+      "Do not exceed recommended turmeric dosage to prevent stomach upset or nausea.",
+      "Lactose intolerant individuals MUST use plant-based milk (almond, soy, oat)."
+    ],
+    "who_should_avoid": [
+      "Individuals with gallstones or biliary tract blockage",
+      "Patients taking antiplatelet or anticoagulant medications in high doses",
+      "Pregnant women in early stages should avoid high medicinal turmeric doses (dietary amounts are safe)",
+      "People with severe iron deficiency (excessive turmeric can bind with iron)"
+    ],
+    "possible_side_effects": [
+      "Mild gastrointestinal discomfort or yellowing of stools"
+    ],
+    "tags": ["inflammation", "joint pain", "recovery", "aches", "sleep"]
+  },
+  {
+    "name": "Peppermint and Fennel Soothing Tea",
+    "applicable_symptoms": [
+      "indigestion",
+      "stomach bloating",
+      "abdominal cramps",
+      "flatulence",
+      "mild nausea"
+    ],
+    "ingredients": [
+      {
+        "name": "Dried Peppermint Leaves",
+        "amount": "1 teaspoon (or 1 organic tea bag)",
+        "notes": "Contains menthol which relaxes gastrointestinal smooth muscles"
+      },
+      {
+        "name": "Fennel Seeds (Crushed)",
+        "amount": "1 teaspoon",
+        "notes": "Carminative properties to expel gas and relieve spasms"
+      },
+      {
+        "name": "Water",
+        "amount": "1 cup (250 ml)",
+        "notes": "Freshly boiled"
+      }
+    ],
+    "preparation_steps": [
+      "Lightly crush 1 teaspoon of fennel seeds using a mortar and pestle.",
+      "Place crushed fennel seeds and peppermint leaves into a tea infuser or mug.",
+      "Pour 1 cup of freshly boiled water over the herbs.",
+      "Cover with a lid and steep for 8-10 minutes to trap volatile medicinal oils.",
+      "Strain and drink warm."
+    ],
+    "dosage_and_frequency": "Drink 1 cup warm 20-30 minutes after heavy meals or at the onset of bloating, up to 2 times daily.",
+    "precautions_and_contraindications": [
+      "Individuals suffering from Gastroesophageal Reflux Disease (GERD) or hiatal hernia should AVOID peppermint, as it relaxes the lower esophageal sphincter and worsens acid reflux.",
+      "Avoid excessive fennel tea during pregnancy as fennel in large doses possesses mild uterine-stimulating phytoestrogens.",
+      "Not suitable for infants under 2 years of age."
+    ],
+    "who_should_avoid": [
+      "Severe GERD or severe acid reflux sufferers (peppermint aggravates acid regurgitation)",
+      "Pregnant women (fennel in concentrated medicinal amounts)",
+      "Infants and children under 2 years",
+      "People allergic to plants in the Apiaceae (carrot/celery) family"
+    ],
+    "possible_side_effects": [
+      "Transient acid heartburn in susceptible individuals"
+    ],
+    "tags": ["digestive", "bloating", "indigestion", "nausea", "gas"]
+  },
+  {
+    "name": "Chamomile Lavender Relaxing Infusion",
+    "applicable_symptoms": [
+      "mild insomnia",
+      "restlessness",
+      "nervous tension",
+      "stress headaches",
+      "difficulty falling asleep"
+    ],
+    "ingredients": [
+      {
+        "name": "Dried German Chamomile Flowers",
+        "amount": "1 tablespoon",
+        "notes": "Contains apigenin, an antioxidant that binds to brain receptors promoting calmness"
+      },
+      {
+        "name": "Culinary Lavender Buds",
+        "amount": "1/2 teaspoon",
+        "notes": "Aromatic compounds that reduce autonomic nervous arousal"
+      },
+      {
+        "name": "Water",
+        "amount": "1 cup (250 ml)",
+        "notes": "Hot water"
+      }
+    ],
+    "preparation_steps": [
+      "Place chamomile flowers and lavender buds into a tea cup or teapot.",
+      "Pour freshly boiled water over the flowers.",
+      "Cover and steep for 7-10 minutes.",
+      "Strain the liquid, inhale the soothing aroma, and sip slowly."
+    ],
+    "dosage_and_frequency": "Drink 1 cup 30 to 45 minutes before going to bed.",
+    "precautions_and_contraindications": [
+      "Do NOT combine with prescription sedatives, sleeping pills, or central nervous system depressants without medical supervision.",
+      "Individuals allergic to plants of the Asteraceae/Compositae family (ragweed, marigolds, daisies) may experience allergic reactions.",
+      "Do not consume immediately prior to driving or operating heavy machinery."
+    ],
+    "who_should_avoid": [
+      "People with known Asteraceae / Ragweed family allergies",
+      "Patients taking prescribed benzodiazepines or barbiturates (risk of additive sedation)",
+      "Individuals with severe hormone-sensitive cancers should avoid large amounts of lavender"
+    ],
+    "possible_side_effects": [
+      "Drowsiness, mild dizziness if consumed during daytime"
+    ],
+    "tags": ["sleep", "insomnia", "anxiety", "stress", "headache"]
+  }
+]
