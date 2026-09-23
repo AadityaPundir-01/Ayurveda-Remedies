@@ -109,7 +109,7 @@ Activate the virtual environment:
 
 Populate the local vector database with vetted home remedies:
 ```powershell
-python seed_data.py
+python seed_data.py    it is for updating data in DB
 ```
 
 ---
@@ -117,7 +117,8 @@ python seed_data.py
 ### Step 4: Run the FastAPI Server
 
 ```powershell
-uvicorn app.main:app --reload --port 8000
+uvicorn app.main:app --reload --port 8000   if it doesnt work try this command
+python -m uvicorn app.main:app --reload --port 8000
 ```
 
 - Interactive API Docs (Swagger UI): [http://localhost:8000/docs](http://localhost:8000/docs)
