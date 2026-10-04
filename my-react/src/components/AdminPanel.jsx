@@ -5,7 +5,7 @@ import {
   Upload, FileText, FileSpreadsheet, File, Lock, Unlock,
   CloudUpload, X, CheckCircle
 } from "lucide-react";
-import { fetchRemediesList, addRemedyToDB, uploadMedicalDocument } from "../api/medicalApi";
+import { fetchRemediesList, addRemedyToDB, uploadMedicalDocument, verifyAdminPassword } from "../api/medicalApi";
 
 // ─── File type config ───────────────────────────────────────────────────────
 const FILE_TYPE_CONFIG = {
@@ -31,6 +31,7 @@ function DocumentUploadSection() {
   const [isUnlocked, setIsUnlocked] = useState(false);
   const [passwordInput, setPasswordInput] = useState("");
   const [passwordError, setPasswordError] = useState("");
+  const [isVerifying, setIsVerifying] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
   const [isDragOver, setIsDragOver] = useState(false);
   const [uploading, setUploading] = useState(false);
@@ -41,17 +42,29 @@ function DocumentUploadSection() {
 
   const ALLOWED_EXTS = ["pdf", "xlsx", "xls", "txt", "json"];
 
-  const handleUnlock = (e) => {
+  const handleUnlock = async (e) => {
     e.preventDefault();
-    if (!passwordInput.trim()) {
+    const entered = passwordInput.trim();
+    if (!entered) {
       setPasswordError("Please enter the admin password.");
       return;
     }
-    // We'll validate against the backend on first upload attempt.
-    // Store locally for use in the upload request.
-    setStoredPassword(passwordInput.trim());
-    setIsUnlocked(true);
+    
+    setIsVerifying(true);
     setPasswordError("");
+
+    try {
+      await verifyAdminPassword(entered);
+      setStoredPassword(entered);
+      setIsUnlocked(true);
+      setPasswordError("");
+    } catch (err) {
+      setPasswordError(err.message || "Invalid admin password. Access denied.");
+      setIsUnlocked(false);
+      setStoredPassword("");
+    } finally {
+      setIsVerifying(false);
+    }
   };
 
   const handleLock = () => {
@@ -190,10 +203,20 @@ function DocumentUploadSection() {
                   onChange={(e) => { setPasswordInput(e.target.value); setPasswordError(""); }}
                   autoComplete="current-password"
                   id="admin-password-input"
+                  disabled={isVerifying}
                 />
-                <button type="submit" className="unlock-btn">
-                  <Unlock size={15} />
-                  <span>Unlock</span>
+                <button type="submit" className="unlock-btn" disabled={isVerifying}>
+                  {isVerifying ? (
+                    <>
+                      <RefreshCw size={15} className="spin-animate" />
+                      <span>Verifying...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Unlock size={15} />
+                      <span>Unlock</span>
+                    </>
+                  )}
                 </button>
               </div>
               {passwordError && (

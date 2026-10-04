@@ -1,6 +1,7 @@
 import logging
 from typing import List
 from fastapi import APIRouter, HTTPException, status, UploadFile, File, Form
+from pydantic import BaseModel
 
 from app.schemas.remedy import RemedyCreate, RemedyBulkCreate, RemedyResponse
 from app.services.ingestion import ingest_remedy, ingest_remedies_bulk, ingest_document_from_file
@@ -9,6 +10,9 @@ from app.config import settings
 
 logger = logging.getLogger(__name__)
 router = APIRouter(prefix="/api/admin/remedies", tags=["Admin Medical Data Management"])
+
+class VerifyPasswordRequest(BaseModel):
+    password: str
 
 # Allowed file extensions for admin document uploads
 ALLOWED_EXTENSIONS = {"pdf", "xlsx", "xls", "txt", "json"}
@@ -91,8 +95,36 @@ def list_remedies(limit: int = 20):
 
 
 # ──────────────────────────────────────────────────────────────────────────────
-# NEW: Admin Document Upload — PDF, Excel, TXT, JSON → Qdrant Vector Store
+# Admin Password Verification & Document Upload
 # ──────────────────────────────────────────────────────────────────────────────
+
+@router.post(
+    "/verify-password",
+    response_model=dict,
+    status_code=status.HTTP_200_OK,
+    summary="Verify admin password",
+    description="Authenticates admin password before unlocking sensitive operations such as document ingestion."
+)
+def verify_admin_password(payload: VerifyPasswordRequest):
+    """
+    Verify admin password. Validates against predefined default 'Aaditya@123'
+    and configured ADMIN_PASSWORD, ensuring access is strictly denied for false passwords.
+    """
+    valid_passwords = settings.get_valid_admin_passwords()
+    entered = (payload.password or "").strip()
+    if entered and entered in valid_passwords:
+        return {
+            "status": "success",
+            "authenticated": True,
+            "message": "Admin password verified successfully."
+        }
+    
+    logger.warning("Failed admin password verification attempt.")
+    raise HTTPException(
+        status_code=status.HTTP_401_UNAUTHORIZED,
+        detail="Invalid admin password. Access denied."
+    )
+
 
 @router.post(
     "/upload-document",
@@ -119,10 +151,11 @@ async def upload_medical_document(
     - **Text** (.txt) — Plain text medical notes, remedy lists
     - **JSON** (.json) — Structured remedy data, medical datasets
     
-    Security: Requires valid admin password (set via ADMIN_PASSWORD env variable).
+    Security: Requires valid admin password (supports predefined default 'Aaditya@123' across cloud/local databases).
     """
     # ── 1. Authenticate ────────────────────────────────────────────────────────
-    if admin_password != settings.ADMIN_PASSWORD:
+    valid_passwords = settings.get_valid_admin_passwords()
+    if not admin_password or admin_password.strip() not in valid_passwords:
         logger.warning(f"Unauthorized document upload attempt for file: {file.filename}")
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,

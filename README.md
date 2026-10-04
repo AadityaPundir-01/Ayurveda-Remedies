@@ -92,7 +92,12 @@ GROQ_MODEL=llama-3.3-70b-versatile
 GEMINI_API_KEY=your_gemini_api_key_here
 GEMINI_MODEL=gemini-1.5-flash
 
-# Qdrant Settings
+# Qdrant Settings (Hosted / Cloud or Local Docker)
+# For Hosted Qdrant (cloud.qdrant.io):
+QDRANT_URL=https://your-cluster-id.us-east4-0.gcp.cloud.qdrant.io:6333
+QDRANT_API_KEY=your_qdrant_cloud_api_key_here
+
+# For Local Docker Qdrant (used if QDRANT_URL is not set):
 QDRANT_HOST=localhost
 QDRANT_PORT=6333
 QDRANT_COLLECTION_NAME=medical_home_remedies

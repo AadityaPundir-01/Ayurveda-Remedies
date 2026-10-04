@@ -54,7 +54,7 @@ export function Header({ activeTab, setActiveTab, healthInfo }) {
               </span>
               {isHealthy && (
                 <span className="status-meta">
-                  {healthInfo.llm_provider?.toUpperCase()} • Qdrant OK
+                  {healthInfo.llm_provider?.toUpperCase()} • {healthInfo?.qdrant?.mode === "cloud" ? "Qdrant Cloud" : "Qdrant OK"}
                 </span>
               )}
             </div>

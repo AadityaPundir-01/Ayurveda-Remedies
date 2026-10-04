@@ -1345,9 +1345,24 @@ body {
   white-space: nowrap;
 }
 
-.unlock-btn:hover {
+.unlock-btn:hover:not(:disabled) {
   transform: translateY(-1px);
   box-shadow: 0 5px 12px rgba(2, 132, 199, 0.35);
+}
+
+.unlock-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.spin-animate {
+  animation: spinKeyframe 1s linear infinite;
+}
+
+@keyframes spinKeyframe {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 .password-error {

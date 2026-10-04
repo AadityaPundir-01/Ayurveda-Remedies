@@ -97,3 +97,39 @@ export async function uploadMedicalDocument(file, adminPassword) {
 
   return await res.json();
 }
+
+/**
+ * Admin: Verify password against the backend before unlocking Document Ingestion.
+ * Works seamlessly with cloud or local database, accepting default 'Aaditya@123'.
+ */
+export async function verifyAdminPassword(password) {
+  const trimmed = (password || "").trim();
+  if (!trimmed) {
+    throw new Error("Please enter the admin password.");
+  }
+
+  try {
+    const res = await fetch(`${API_BASE_URL}/api/admin/remedies/verify-password`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ password: trimmed }),
+    });
+
+    if (!res.ok) {
+      const errorData = await res.json().catch(() => ({}));
+      throw new Error(errorData.detail || "Invalid admin password. Access denied.");
+    }
+
+    return await res.json();
+  } catch (err) {
+    // If backend gave an explicit error (like 401/403 Invalid password), always throw it
+    if (err.message && !err.message.includes("Failed to fetch") && !err.message.includes("NetworkError")) {
+      throw err;
+    }
+    // Predefined default fallback in case of direct network failure
+    if (trimmed === "Aaditya@123") {
+      return { status: "success", authenticated: true };
+    }
+    throw new Error("Invalid admin password. Access denied.");
+  }
+}

@@ -32,8 +32,10 @@ def seed_database():
     # Ingest bulk
     ids = ingest_remedies_bulk(remedies)
     logger.info(f"Successfully seeded {len(ids)} remedies into collection '{settings.QDRANT_COLLECTION_NAME}'.")
+    dashboard_url = f"{settings.get_qdrant_url()}/dashboard" if settings.get_qdrant_url() else "http://localhost:6333/dashboard"
     print(f"\nSeeding Complete! Successfully added {len(ids)} remedies.")
-    print("You can view the vectors in your browser at: http://localhost:6333/dashboard\n")
+    print(f"Vector Database Target: {settings.get_qdrant_url() or f'{settings.QDRANT_HOST}:{settings.QDRANT_PORT}'}")
+    print(f"You can view your vectors at: {dashboard_url}\n")
 
 
 if __name__ == "__main__":

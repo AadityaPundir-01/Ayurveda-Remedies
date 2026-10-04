@@ -19,14 +19,17 @@ logger = logging.getLogger(__name__)
 async def lifespan(app: FastAPI):
     """Application startup & shutdown events."""
     logger.info("Initializing Agentic AI Medical Backend...")
+    target_desc = settings.get_qdrant_url() or f"{settings.QDRANT_HOST}:{settings.QDRANT_PORT}"
+    mode_desc = "Hosted/Cloud" if settings.is_cloud_qdrant() else "Local Docker"
     try:
         client = get_qdrant_client()
         ensure_collection_exists(client)
-        logger.info("Qdrant connection and collection verified.")
+        logger.info(f"Qdrant ({mode_desc}) connected at {target_desc} and collection '{settings.QDRANT_COLLECTION_NAME}' verified.")
     except Exception as e:
         logger.warning(
-            f"Could not connect to Qdrant at startup: {e}. "
-            "Please ensure Docker desktop and 'docker compose up -d' is running."
+            f"Could not connect to Qdrant ({mode_desc} at {target_desc}): {e}. "
+            "If using Hosted/Cloud Qdrant, check QDRANT_URL and QDRANT_API_KEY in .env. "
+            "If using Local Qdrant, ensure Docker Desktop is running."
         )
     yield
     logger.info("Shutting down Agentic AI Medical Backend...")
