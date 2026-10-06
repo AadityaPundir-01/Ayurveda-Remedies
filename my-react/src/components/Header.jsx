@@ -1,5 +1,5 @@
 import React from "react";
-import { Stethoscope, Database, ShieldAlert, Sparkles, Activity } from "lucide-react";
+import { Leaf, Stethoscope, Database, ShieldAlert, Sparkles, Activity } from "lucide-react";
 
 export function Header({ activeTab, setActiveTab, healthInfo }) {
   const isHealthy = healthInfo?.status === "healthy";
@@ -8,7 +8,7 @@ export function Header({ activeTab, setActiveTab, healthInfo }) {
   return (
     <header className="app-header">
       <div className="header-container">
-        <div className="logo-brand">
+        <div className="logo-brand" onClick={() => setActiveTab("sanctuary")} style={{ cursor: "pointer" }}>
           <div className="logo-icon-wrapper">
             <span className="leaf-emoji">🌿</span>
           </div>
@@ -17,11 +17,11 @@ export function Header({ activeTab, setActiveTab, healthInfo }) {
               <h1 className="brand-title">AyurAgent AI</h1>
               <span className="badge-agentic">
                 <Sparkles size={12} className="inline mr-1" />
-                LangGraph RAG
+                Vedic RAG AI
               </span>
             </div>
             <p className="brand-tagline">
-              Agentic Home Remedy Prescriptions with Mandatory Precaution Guardrails
+              Natural Healing Sanctuary & LangGraph Clinical Herbal Prescriptions
             </p>
           </div>
         </div>
@@ -30,11 +30,18 @@ export function Header({ activeTab, setActiveTab, healthInfo }) {
         <div className="header-actions">
           <div className="tabs-nav">
             <button
+              className={`tab-btn ${activeTab === "sanctuary" ? "active" : ""}`}
+              onClick={() => setActiveTab("sanctuary")}
+            >
+              <Leaf size={16} />
+              <span>Natural Sanctuary</span>
+            </button>
+            <button
               className={`tab-btn ${activeTab === "consult" ? "active" : ""}`}
               onClick={() => setActiveTab("consult")}
             >
               <Stethoscope size={16} />
-              <span>Consultation</span>
+              <span>AI Vaidya Consult</span>
             </button>
             <button
               className={`tab-btn ${activeTab === "admin" ? "active" : ""}`}

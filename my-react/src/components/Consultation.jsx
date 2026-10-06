@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { 
   Send, Sparkles, AlertCircle, ChevronDown, ChevronUp, 
-  ShieldCheck, HeartPulse, User, RefreshCw, CheckCircle2 
+  ShieldCheck, HeartPulse, User, RefreshCw, CheckCircle2,
+  Leaf, ArrowLeft
 } from "lucide-react";
 import { consultRemedyAgent } from "../api/medicalApi";
 import { ConsultationResult } from "./ConsultationResult";
@@ -14,9 +15,15 @@ const QUICK_SUGGESTIONS = [
   "Throat irritation and mild congestion"
 ];
 
-export function Consultation() {
-  const [query, setQuery] = useState("");
+export function Consultation({ initialQuery = "", onBackToSanctuary }) {
+  const [query, setQuery] = useState(initialQuery || "");
   const [showProfile, setShowProfile] = useState(false);
+
+  useEffect(() => {
+    if (initialQuery) {
+      setQuery(initialQuery);
+    }
+  }, [initialQuery]);
   
   // Patient Profile state
   const [age, setAge] = useState("");
@@ -76,14 +83,23 @@ export function Consultation() {
 
   return (
     <div className="consultation-view">
+      {onBackToSanctuary && (
+        <div className="back-sanctuary-bar">
+          <button className="back-sanctuary-btn" onClick={onBackToSanctuary}>
+            <ArrowLeft size={16} />
+            <span>Return to Natural Healing Sanctuary & Herbarium</span>
+          </button>
+        </div>
+      )}
+
       {/* Consultation Input Section */}
       <section className="consultation-card glass-panel">
         <div className="card-header">
           <div className="card-badge">
-            <HeartPulse size={16} />
-            <span>Symptom Intake & RAG Matcher</span>
+            <Leaf size={16} />
+            <span>Ayurvedic Clinical Intake & RAG Matcher</span>
           </div>
-          <h2 className="card-title">What symptoms are you experiencing?</h2>
+          <h2 className="card-title">Consult the Ayurvedic AI Vaidya</h2>
           <p className="card-desc">
             Describe your ailments. Our LangGraph agent will match your symptoms against the vector database,
             formulate a natural remedy with exact dosages, and enforce strict precaution checks.
