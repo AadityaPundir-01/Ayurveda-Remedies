@@ -1,0 +1,38 @@
+# Secrets & local environment files
+.env
+.env.*
+!.env.example
+
+# Python virtual environment & bytecode
+.venv/
+venv/
+ENV/
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Git repository
+.git/
+.gitignore
+
+# Frontend directory and dependencies (backend container only needs app/)
+my-react/
+node_modules/
+dist/
+
+# Local Qdrant volume storage
+qdrant_storage/
+
+# IDE & Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs & Temporary files
+*.log
+scratch/
+scratch_*.py
+test_gemini.py
+tests/
+implementation_plan.md

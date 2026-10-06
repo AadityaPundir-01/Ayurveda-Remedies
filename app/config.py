@@ -1,5 +1,5 @@
-from typing import List, Literal
-from pydantic import Field
+from typing import List, Literal, Optional, Any, Union
+from pydantic import Field, field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -68,9 +68,37 @@ class Settings(BaseSettings):
         return self.get_qdrant_url() is not None or self.get_qdrant_api_key() is not None
 
     # Server Configuration
+    PORT: Optional[int] = None
     APP_PORT: int = 8000
     APP_HOST: str = "0.0.0.0"
-    CORS_ORIGINS: List[str] = ["*"]
+    CORS_ORIGINS: Union[List[str], str] = ["*"]
+
+    @field_validator("CORS_ORIGINS", mode="before")
+    @classmethod
+    def parse_cors_origins(cls, value: Any) -> List[str]:
+        """Supports both comma-separated strings ('https://a.com,https://b.com')
+        and JSON/list-style values ('["https://a.com"]').
+        """
+        if isinstance(value, list):
+            return [str(v).strip() for v in value if str(v).strip()]
+        if isinstance(value, str):
+            value = value.strip()
+            if not value:
+                return ["*"]
+            if value.startswith("[") and value.endswith("]"):
+                try:
+                    import json
+                    parsed = json.loads(value)
+                    if isinstance(parsed, list):
+                        return [str(v).strip() for v in parsed if str(v).strip()]
+                except Exception:
+                    pass
+            return [origin.strip() for origin in value.split(",") if origin.strip()]
+        return ["*"]
+
+    def get_port(self) -> int:
+        """Returns the effective server port (cloud PORT env var or APP_PORT fallback)."""
+        return self.PORT or self.APP_PORT or 8000
 
     # Admin Authentication (protects the document upload endpoint)
     # Default predefined password is "Aaditya@123" which always works across local and cloud databases
